@@ -22,19 +22,19 @@ public class ProductService {
         return this.productRepository.findOne(id);
     }
 
-    public void saveProduct(Product product) {
+    public void save(Product product) {
         this.productRepository.save(product);
     }
 
-    public void updateProduct(Product product) {
+    public void update(Product product) {
         this.productRepository.save(product);
     }
 
-    public void deleteProductById(BigDecimal id) {
+    public void deleteById(BigDecimal id) {
         this.productRepository.delete(id);
     }
 
-    public Product setProduct(Product product, Product currentProduct) {
+    public Product set(Product product, Product currentProduct) {
         currentProduct.setName(product.getName());
         currentProduct.setDescription(product.getDescription());
         currentProduct.setPrice(product.getPrice());
@@ -45,7 +45,7 @@ public class ProductService {
         return currentProduct;
     }
 
-    public boolean isProductExist(Product product) {
+    public boolean isExist(Product product) {
         return (findById(product.getId()) != null);
     }
 }

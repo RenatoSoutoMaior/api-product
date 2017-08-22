@@ -18,7 +18,7 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping(value = "/product/")
-    public ResponseEntity<List<Product>> listAllProducts() {
+    public ResponseEntity<List<Product>> listAll() {
         List<Product> products = productService.findAll();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -27,7 +27,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "/product/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Product> getProduct(@PathVariable("id") BigDecimal id) {
+    public ResponseEntity<Product> findById(@PathVariable("id") BigDecimal id) {
         Product product = productService.findById(id);
         if (product == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -36,35 +36,35 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product/")
-    public ResponseEntity<Void> createProduct(@RequestBody Product product) {
+    public ResponseEntity<Void> create(@RequestBody Product product) {
 
-        if (productService.isProductExist(product)) {
+        if (productService.isExist(product)) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-        productService.saveProduct(product);
+        productService.save(product);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/product/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable("id") BigDecimal id, @RequestBody Product product) {
+    public ResponseEntity<Product> update(@PathVariable("id") BigDecimal id, @RequestBody Product product) {
 
         Product currentProduct = productService.findById(id);
 
-        if (productService.isProductExist(currentProduct)) {
+        if (productService.isExist(currentProduct)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        productService.updateProduct(productService.setProduct(product, currentProduct));
+        productService.update(productService.set(product, currentProduct));
         return new ResponseEntity<>(currentProduct, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/product/{id}")
-    public ResponseEntity<Product> deleteProduct(@PathVariable("id") BigDecimal id) {
+    public ResponseEntity<Product> delete(@PathVariable("id") BigDecimal id) {
 
         Product product = productService.findById(id);
-        if (productService.isProductExist(product)) {
+        if (productService.isExist(product)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        productService.deleteProductById(id);
+        productService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
