@@ -26,19 +26,14 @@ public class Product {
     private String shelfLife;
 
     public Product(String name, String description, BigDecimal price, BigDecimal quantity,
-                   Category category, Status status, String user, String image,
-                   BigDecimal weight, BigDecimal unit, String shelfLife) {
+                   Category category, Status status, String image) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
         this.category = category;
         this.status = status;
-        this.user = user;
         this.image = image;
-        this.weight = weight;
-        this.unit = unit;
-        this.shelfLife = shelfLife;
     }
 
     public BigDecimal getId() {
