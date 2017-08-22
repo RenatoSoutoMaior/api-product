@@ -17,13 +17,13 @@ public class Product {
     private String description;
     private BigDecimal price;
     private BigDecimal quantity;
-
-    public Product(String name, String description, BigDecimal price, BigDecimal quantity) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.quantity = quantity;
-    }
+    private String user;
+    private String image;
+    private BigDecimal weight;
+    private BigDecimal unit;
+    private Category category;
+    private Status status;
+    private String shelfLife;
 
     public BigDecimal getId() {
         return id;
