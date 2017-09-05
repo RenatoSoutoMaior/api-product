@@ -1,17 +1,16 @@
 package com.api.product.model;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
-@Entity
+@Embeddable
 public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigDecimal id;
+
 
     private String name;
     private String description;
@@ -25,13 +24,7 @@ public class Product {
     private Status status;
     private String shelfLife;
 
-    public BigDecimal getId() {
-        return id;
-    }
 
-    public void setId(BigDecimal id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
