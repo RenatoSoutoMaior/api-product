@@ -16,7 +16,7 @@ public interface SalesRepository extends JpaRepository<Sale, BigDecimal>{
 	List<Sale> findByPrice(@Param("price") BigDecimal price,@Param("price2") BigDecimal price2);
 	
 	@Query("SELECT s FROM Sale s WHERE s.inicialDate BETWEEN :inicialDate AND :lastDate ORDER BY s.inicialDate")
-	List<Sale> findByDate(@Param("inicialDate")String inicialDateString,@Param("lastDate")String lastDateString);
+	List<Sale> findByDate(@Param("inicialDate")Date inicialDate,@Param("lastDate")Date lastDate);
 
 //	List<Sale> findByDate(LocalDate inicialDate, LocalDate lastDate);
 	

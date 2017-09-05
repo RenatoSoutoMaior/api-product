@@ -1,8 +1,6 @@
 package com.api.product.controller;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -43,13 +41,9 @@ public class SaleController {
 		return saleRepository.findByPrice(price, price2);
 	}
 	
-	@RequestMapping(value = "/sale/date/inicial={inicialDate}/last={lastDate}", method = RequestMethod.GET)
+	@RequestMapping(value = "/sale/date/{inicialDate}/{lastDate}", method = RequestMethod.GET)
 	public List<Sale> findByDate(@PathVariable Date inicialDate, @PathVariable Date lastDate) {
-//		Date data1 = inicialDate.getTime();
-//		Date data2 = inicialDate.getTime();
-		String inicialDateString = new SimpleDateFormat("dd/MM/yyyy").format(inicialDate.getTime());
-		String lastDateString = new SimpleDateFormat("dd/MM/yyyy").format(lastDate.getTime());
-		return saleRepository.findByDate(inicialDateString,lastDateString);
+		return saleRepository.findByDate(inicialDate, lastDate);
 	}
 	
 	@RequestMapping(value = "/sale/delete/{id}", method = RequestMethod.DELETE)
