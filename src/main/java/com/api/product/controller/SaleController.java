@@ -1,6 +1,9 @@
 package com.api.product.controller;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -42,8 +45,12 @@ public class SaleController {
 	}
 	
 	@RequestMapping(value = "/sale/date/{inicialDate}/{lastDate}", method = RequestMethod.GET)
-	public List<Sale> findByDate(@PathVariable Date inicialDate, @PathVariable Date lastDate) {
-		return saleRepository.findByDate(inicialDate, lastDate);
+	public List<Sale> findByDate(@PathVariable String inicialDate, @PathVariable String lastDate) throws ParseException {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Date dateInicial = df.parse(inicialDate);
+		Date dateLast = df.parse(lastDate);
+		
+		return saleRepository.findByDate(dateInicial, dateLast);
 	}
 	
 	@RequestMapping(value = "/sale/delete/{id}", method = RequestMethod.DELETE)
