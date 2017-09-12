@@ -11,6 +11,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.api.product.validate.ValidationMessages;
 
 @Entity
@@ -29,7 +31,7 @@ public class Sale {
 //	@DateTimeFormat(pattern="dd/MM/yyyy")
 //	@NotNull(message = ValidationMessages.MESSAGE_LASTDATE_NOT_NULL)
 	private Date lastDate;
-	
+
 	@NotNull(message = ValidationMessages.MESSAGE_PRICE_NOT_NULL)
 	private BigDecimal price;
 	
@@ -50,6 +52,7 @@ public class Sale {
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
+
 	public Date getInicialDate() {
 		return inicialDate;
 	}
