@@ -17,7 +17,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping(value = "/product/")
+    @GetMapping(value = "/product")
     public ResponseEntity<List<Product>> listAll() {
         List<Product> products = productService.findAll();
         if (products.isEmpty()) {
@@ -35,7 +35,7 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/product/")
+    @PostMapping(value = "/product")
     public ResponseEntity<Void> create(@RequestBody Product product) {
 
         if (productService.isExist(product)) {
@@ -45,17 +45,17 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/product/{id}")
-    public ResponseEntity<Product> update(@PathVariable("id") BigDecimal id, @RequestBody Product product) {
-
-        Product currentProduct = productService.findById(id);
-
-        if (productService.isExist(currentProduct)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        productService.update(productService.set(product, currentProduct));
-        return new ResponseEntity<>(currentProduct, HttpStatus.OK);
-    }
+//    @PutMapping(value = "/product/{id}")
+//    public ResponseEntity<Product> update(@PathVariable("id") BigDecimal id, @RequestBody Product product) {
+//
+//        Product currentProduct = productService.findById(id);
+//
+//        if (productService.isExist(currentProduct)) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        productService.update(productService.set(product, currentProduct));
+//        return new ResponseEntity<>(currentProduct, HttpStatus.OK);
+//    }
 
     @DeleteMapping(value = "/product/{id}")
     public ResponseEntity<Product> delete(@PathVariable("id") BigDecimal id) {

@@ -35,13 +35,6 @@ public class ProductService {
     }
 
     public Product set(Product product, Product currentProduct) {
-        currentProduct.setName(product.getName());
-        currentProduct.setDescription(product.getDescription());
-        currentProduct.setPrice(product.getPrice());
-        currentProduct.setQuantity(product.getQuantity());
-        currentProduct.setCategory(product.getCategory());
-        currentProduct.setStatus(product.getStatus());
-        currentProduct.setImage(product.getImage());
         return currentProduct;
     }
 

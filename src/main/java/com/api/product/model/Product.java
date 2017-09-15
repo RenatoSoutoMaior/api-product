@@ -17,24 +17,13 @@ public class Product {
     private String description;
     private BigDecimal price;
     private BigDecimal quantity;
-    private Category category;
-    private Status status;
-    private String user;
+    private String shopping;
     private String image;
     private BigDecimal weight;
     private BigDecimal unit;
     private String shelfLife;
-
-    public Product(String name, String description, BigDecimal price, BigDecimal quantity,
-                   Category category, Status status, String image) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.quantity = quantity;
-        this.category = category;
-        this.status = status;
-        this.image = image;
-    }
+    private Status status;
+    private BigDecimal category;
 
     public BigDecimal getId() {
         return id;
@@ -76,28 +65,12 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getShopping() {
+        return shopping;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
+    public void setShopping(String shopping) {
+        this.shopping = shopping;
     }
 
     public String getImage() {
@@ -130,5 +103,21 @@ public class Product {
 
     public void setShelfLife(String shelfLife) {
         this.shelfLife = shelfLife;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public BigDecimal getCategory() {
+        return category;
+    }
+
+    public void setCategory(BigDecimal category) {
+        this.category = category;
     }
 }
