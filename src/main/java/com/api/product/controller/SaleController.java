@@ -24,12 +24,12 @@ public class SaleController {
 	@Autowired
 	SalesRepository saleRepository;
 	
-	@RequestMapping(value = "/sale/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/sale/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void savingSale(@RequestBody Sale sale) {
 			this.saleRepository.save(sale);
 	}
 	
-	@RequestMapping(value = "/sale/get", method = RequestMethod.GET)
+	@RequestMapping(value = "/sale/", method = RequestMethod.GET)
 	public List<Sale> getSales() {
 		return saleRepository.findAll();
 	}
@@ -44,6 +44,11 @@ public class SaleController {
 		return saleRepository.findByPrice(price, price2);
 	}
 	
+	@RequestMapping(value = "/sale/", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void update(@RequestBody Sale order) {
+		this.saleRepository.saveAndFlush(order);
+	}
+	
 	@RequestMapping(value = "/sale/date/{inicialDate}/{lastDate}", method = RequestMethod.GET)
 	public List<Sale> findByDate(@PathVariable String inicialDate, @PathVariable String lastDate) throws ParseException {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -53,7 +58,7 @@ public class SaleController {
 		return saleRepository.findByDate(dateInicial, dateLast);
 	}
 	
-	@RequestMapping(value = "/sale/delete/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/sale/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable BigDecimal id) {
 		this.saleRepository.delete(id);
 	}
