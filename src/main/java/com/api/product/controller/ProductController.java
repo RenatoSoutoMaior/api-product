@@ -35,6 +35,15 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/api/product/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Product> findByName(@PathVariable("name") String name) {
+        List<Product> product = productService.findByName(name);
+        if (product == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(product, HttpStatus.OK);
+    }
+
     @PostMapping(value = "/product")
     public ResponseEntity<Void> create(@RequestBody Product product) {
 

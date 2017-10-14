@@ -41,4 +41,10 @@ public class ProductService {
     public boolean isExist(Product product) {
         return (findById(product.getId()) != null);
     }
+
+    public List<Product> findByName(String name) {
+        return productRepository.findByNameContainingIgnoreCase(name);
+    }
+
+
 }
