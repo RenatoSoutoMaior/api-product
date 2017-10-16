@@ -1,11 +1,9 @@
 package com.api.product.controller;
 
 import com.api.product.model.Product;
-import com.api.product.service.ProductService;
+import com.api.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -15,65 +13,35 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    ProductService productService;
+    ProductRepository productRepository;
 
     @GetMapping(value = "/product")
-    public ResponseEntity<List<Product>> listAll() {
-        List<Product> products = productService.findAll();
-        if (products.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(products, HttpStatus.OK);
+    public List<Product> listAll() {
+        return productRepository.findAll();
     }
 
     @GetMapping(value = "/product/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Product> findById(@PathVariable("id") BigDecimal id) {
-        Product product = productService.findById(id);
-        if (product == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(product, HttpStatus.OK);
+    public Product findById(@PathVariable("id") BigDecimal id) {
+        return productRepository.findOne(id);
     }
 
     @GetMapping(value = "/api/product/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Product> findByName(@PathVariable("name") String name) {
-        List<Product> product = productService.findByName(name);
-        if (product == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity(product, HttpStatus.OK);
+    public List<Product> findByName(@PathVariable("name") String name) {
+        return productRepository.findByNameContainingIgnoreCase(name);
     }
 
     @PostMapping(value = "/product")
-    public ResponseEntity<Void> create(@RequestBody Product product) {
-
-        if (productService.isExist(product)) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
-        productService.save(product);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public void create(@RequestBody Product product) {
+        productRepository.save(product);
     }
 
-//    @PutMapping(value = "/product/{id}")
-//    public ResponseEntity<Product> update(@PathVariable("id") BigDecimal id, @RequestBody Product product) {
-//
-//        Product currentProduct = productService.findById(id);
-//
-//        if (productService.isExist(currentProduct)) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        productService.update(productService.set(product, currentProduct));
-//        return new ResponseEntity<>(currentProduct, HttpStatus.OK);
-//    }
+    @PutMapping(value = "/product/{id}")
+    public void update(@RequestBody Product product) {
+        productRepository.saveAndFlush(product);
+    }
 
     @DeleteMapping(value = "/product/{id}")
-    public ResponseEntity<Product> delete(@PathVariable("id") BigDecimal id) {
-
-        Product product = productService.findById(id);
-        if (productService.isExist(product)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        productService.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public void delete(@PathVariable("id") BigDecimal id) {
+        productRepository.delete(id);
     }
 }
