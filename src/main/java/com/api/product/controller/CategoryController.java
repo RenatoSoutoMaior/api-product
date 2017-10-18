@@ -25,11 +25,6 @@ public class CategoryController {
         return categoryRepository.findOne(id);
     }
 
-    @GetMapping(value = "/api/product/category/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Category> findByName(@PathVariable("name") String name) {
-        return categoryRepository.findByNameContainingIgnoreCase(name);
-    }
-
     @PostMapping(value = "/product/category")
     public void create(@RequestBody Category product) {
         categoryRepository.save(product);
