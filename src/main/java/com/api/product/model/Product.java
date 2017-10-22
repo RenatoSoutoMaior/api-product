@@ -21,6 +21,7 @@ public class Product {
     private String shelfLife;
     private Status status;
     private BigDecimal category;
+    private String unitOfMeasurement;
 
     public BigDecimal getId() {
         return id;
@@ -116,5 +117,13 @@ public class Product {
 
     public void setCategory(BigDecimal category) {
         this.category = category;
+    }
+
+    public String getUnitOfMeasurement() {
+        return unitOfMeasurement;
+    }
+
+    public void setUnitOfMeasurement(String unitOfMeasurement) {
+        this.unitOfMeasurement = unitOfMeasurement;
     }
 }
