@@ -11,17 +11,26 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigDecimal id;
+    private Long id;
 
     private String name;
-    private BigDecimal idFather;
+    private Long idFather;
 
-    public BigDecimal getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigDecimal id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getIdFather() {
+        return idFather;
+    }
+
+    public void setIdFather(Long idFather) {
+        this.idFather = idFather;
     }
 
     public String getName() {
@@ -32,11 +41,5 @@ public class Category {
         this.name = name;
     }
 
-    public BigDecimal getIdFather() {
-        return idFather;
-    }
 
-    public void setIdFather(BigDecimal idFather) {
-        this.idFather = idFather;
-    }
 }
