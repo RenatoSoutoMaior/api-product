@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 @Entity
-@Table(name = "tarefa")
+@Table(name = "product")
 public class Product {
 
     @Id
@@ -51,7 +51,6 @@ public class Product {
     @Column(name = "unitOfMeasurement")
     private String unitOfMeasurement;
 
-    @ManyToOne
     @NotNull
     @Column(name = "category", nullable = false)
     private Long category;
