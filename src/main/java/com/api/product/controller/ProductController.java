@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -21,7 +20,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "/product/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product findById(@PathVariable("id") BigDecimal id) {
+    public Product findById(@PathVariable("id") Long id) {
         return productRepository.findOne(id);
     }
 
@@ -41,7 +40,7 @@ public class ProductController {
     }
 
     @DeleteMapping(value = "/product/{id}")
-    public void delete(@PathVariable("id") BigDecimal id) {
+    public void delete(@PathVariable("id") Long id) {
         productRepository.delete(id);
     }
 }

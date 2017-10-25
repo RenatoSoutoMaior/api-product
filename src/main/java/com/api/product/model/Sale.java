@@ -1,45 +1,42 @@
 package com.api.product.model;
 
+import com.api.product.validate.ValidationMessages;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-
-import com.api.product.validate.ValidationMessages;
 
 @Entity
 public class Sale {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigDecimal id;
-	
+    private Long id;
+
+	@NotNull
+	@Column(name = "inicialDate", nullable = false)
 	@Temporal(TemporalType.DATE)
-//	@NotNull(message = ValidationMessages.MESSAGE_INICIALDATE_NOT_NULL)
-//	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date inicialDate;
 
+	@NotNull
+	@Column(name = "lastDate", nullable = false)
 	@Temporal(TemporalType.DATE)
-//	@DateTimeFormat(pattern="dd/MM/yyyy")
-//	@NotNull(message = ValidationMessages.MESSAGE_LASTDATE_NOT_NULL)
 	private Date lastDate;
 	
 	@NotNull(message = ValidationMessages.MESSAGE_PRICE_NOT_NULL)
+	@Column(name = "price", nullable = false)
 	private BigDecimal price;
-	
-//	private Status status;
 
-	public BigDecimal getId() {
+	@NotNull
+	@Column(name = "status", nullable = false)
+	private Boolean status;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(BigDecimal id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -65,5 +62,12 @@ public class Sale {
 	public void setLastDate(Date lastDate) {
 		this.lastDate = lastDate;
 	}
-	
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
 }

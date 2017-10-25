@@ -1,33 +1,66 @@
 package com.api.product.model;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 @Entity
+@Table(name = "tarefa")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigDecimal id;
+    private Long id;
 
+    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @NotNull
+    @Column(name = "price", nullable = false)
     private BigDecimal price;
-    private BigDecimal quantity;
+
+    @NotNull
+    @Column(name = "quantity", nullable = false)
+    private BigInteger quantity;
+
+    @Column(name = "shopping")
     private String shopping;
+
+    @Column(name = "image")
     private String image;
+
+    @Column(name = "weight")
     private BigDecimal weight;
+
+    @Column(name = "unit")
     private BigDecimal unit;
+
+    @Column(name = "shelfLife")
     private String shelfLife;
-    private Status status;
-    private BigDecimal category;
+
+    @NotNull
+    @Column(name = "status", nullable = false)
+    private Boolean status;
+
+    @Column(name = "unitOfMeasurement")
     private String unitOfMeasurement;
 
-    public BigDecimal getId() {
+    @ManyToOne
+    @NotNull
+    @Column(name = "category", nullable = false)
+    private Long category;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigDecimal id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -55,11 +88,11 @@ public class Product {
         this.price = price;
     }
 
-    public BigDecimal getQuantity() {
+    public BigInteger getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(BigDecimal quantity) {
+    public void setQuantity(BigInteger quantity) {
         this.quantity = quantity;
     }
 
@@ -103,19 +136,19 @@ public class Product {
         this.shelfLife = shelfLife;
     }
 
-    public Status getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
-    public BigDecimal getCategory() {
+    public Long getCategory() {
         return category;
     }
 
-    public void setCategory(BigDecimal category) {
+    public void setCategory(Long category) {
         this.category = category;
     }
 

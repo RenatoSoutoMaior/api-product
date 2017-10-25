@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -21,22 +20,22 @@ public class CategoryController {
     }
 
     @GetMapping(value = "/product/category/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Category findById(@PathVariable("id") BigDecimal id) {
+    public Category findById(@PathVariable("id") Long id) {
         return categoryRepository.findOne(id);
     }
 
     @PostMapping(value = "/product/category")
-    public void create(@RequestBody Category product) {
-        categoryRepository.save(product);
+    public void create(@RequestBody Category category) {
+        categoryRepository.save(category);
     }
 
     @PutMapping(value = "/product/category/{id}")
-    public void update(@RequestBody Category product) {
-        categoryRepository.saveAndFlush(product);
+    public void update(@RequestBody Category category) {
+        categoryRepository.saveAndFlush(category);
     }
 
     @DeleteMapping(value = "/product/category/{id}")
-    public void delete(@PathVariable("id") BigDecimal id) {
+    public void delete(@PathVariable("id") Long id) {
         categoryRepository.delete(id);
     }
 }
