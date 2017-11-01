@@ -17,7 +17,6 @@ public class Category {
     @Column(name = "idFather")
     private Long idFather;
 
-
     public Long getId() {
         return id;
     }
