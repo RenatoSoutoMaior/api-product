@@ -1,10 +1,9 @@
 package com.api.product.repository;
 
-import com.api.product.model.Category;
+import com.api.product.model.ShoppingList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long> {
-
+public interface ShoppingListRepository extends JpaRepository<ShoppingList, Long> {
 }
