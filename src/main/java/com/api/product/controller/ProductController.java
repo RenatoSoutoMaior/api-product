@@ -14,7 +14,7 @@ public class ProductController {
     @Autowired
     ProductRepository productRepository;
 
-    @GetMapping(value = "/product")
+    @GetMapping(value = "/api/product/")
     public List<Product> listAll() {
         return productRepository.findAll();
     }
@@ -27,6 +27,10 @@ public class ProductController {
     @GetMapping(value = "/api/product/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Product> findByName(@PathVariable("name") String name) {
         return productRepository.findByNameContainingIgnoreCase(name);
+    }
+    @GetMapping(value = "/api/product/category/{category}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Product> findByCategory(@PathVariable("category") Long category) {
+        return productRepository.findByCategory(category);
     }
 
     @PostMapping(value = "/product")
