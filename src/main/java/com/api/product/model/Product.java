@@ -43,8 +43,8 @@ public class Product {
     @Column(name = "shelfLife")
     private String shelfLife;
 
-/*    @Column(name = "status")
-    private Boolean status;*/
+    @Column(name = "status")
+    private Boolean status;
 
     @Column(name = "unitOfMeasurement")
     private String unitOfMeasurement;
@@ -133,13 +133,13 @@ public class Product {
         this.shelfLife = shelfLife;
     }
 
-/*    public Boolean getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
     public void setStatus(Boolean status) {
         this.status = status;
-    }*/
+    }
 
     public Long getCategory() {
         return category;
