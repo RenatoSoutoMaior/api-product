@@ -44,7 +44,7 @@ public class Product {
     private String shelfLife;
 
     @Column(name = "status")
-    private Boolean status;
+    private boolean status;
 
     @Column(name = "unitOfMeasurement")
     private String unitOfMeasurement;
