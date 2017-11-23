@@ -3,7 +3,6 @@ package com.api.product.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigInteger;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "shoppingList")
@@ -14,7 +13,7 @@ public class ShoppingList {
     private Long id;
 
     @NotNull
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "description")
@@ -32,14 +31,14 @@ public class ShoppingList {
     @Column(name = "onlyOnce")
     private Boolean onlyOnce;
 
-    @Column(name = "date")
-    private LocalDate date;
+    @Column(name = "alertDate")
+    private String alertDate;
 
     @Column(name = "dayWeek")
     private String dayWeek;
 
     @Column(name = "dayMonth")
-    private Integer dayMonth;
+    private String dayMonth;
 
     @Column(name = "color")
     private String color;
@@ -112,12 +111,12 @@ public class ShoppingList {
         this.onlyOnce = onlyOnce;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public String getAlertDate() {
+        return alertDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setAlertDate(String alertDate) {
+        this.alertDate = alertDate;
     }
 
     public String getDayWeek() {
@@ -128,11 +127,11 @@ public class ShoppingList {
         this.dayWeek = dayWeek;
     }
 
-    public Integer getDayMonth() {
+    public String getDayMonth() {
         return dayMonth;
     }
 
-    public void setDayMonth(Integer dayMonth) {
+    public void setDayMonth(String dayMonth) {
         this.dayMonth = dayMonth;
     }
 
