@@ -43,18 +43,6 @@ public class ShoppingList {
     @Column(name = "color")
     private String color;
 
-    @Column(name = "idProduct")
-    private Long idProduct;
-
-    @Column(name = "productName")
-    private String productName;
-
-    @Column(name = "quantity")
-    private BigInteger quantity;
-
-    @Column(name = "brand")
-    private String brand;
-
     public Long getId() {
         return id;
     }
@@ -143,35 +131,4 @@ public class ShoppingList {
         this.color = color;
     }
 
-    public Long getIdProduct() {
-        return idProduct;
-    }
-
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public BigInteger getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(BigInteger quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
 }
