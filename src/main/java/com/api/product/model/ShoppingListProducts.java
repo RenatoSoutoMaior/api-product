@@ -1,9 +1,9 @@
 package com.api.product.model;
 
 import javax.persistence.*;
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
-@Entity(name = "ShoppingListProducts")
+@Entity(name = "shoppingListProducts")
 public class ShoppingListProducts {
 
     @Id
@@ -17,7 +17,7 @@ public class ShoppingListProducts {
     private String productName;
 
     @Column(name = "quantity")
-    private BigInteger quantity;
+    private BigDecimal quantity;
 
     @Column(name = "brand")
     private String brand;
@@ -49,11 +49,11 @@ public class ShoppingListProducts {
         this.productName = productName;
     }
 
-    public BigInteger getQuantity() {
+    public BigDecimal getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(BigInteger quantity) {
+    public void setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
     }
 
@@ -72,4 +72,5 @@ public class ShoppingListProducts {
     public void setListId(Long listId) {
         this.listId = listId;
     }
+
 }

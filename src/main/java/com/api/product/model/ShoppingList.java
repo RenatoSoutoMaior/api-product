@@ -43,6 +43,9 @@ public class ShoppingList {
     @Column(name = "color")
     private String color;
 
+    @Column(name = "idClient")
+    private Long idClient;
+
     public Long getId() {
         return id;
     }
@@ -131,4 +134,11 @@ public class ShoppingList {
         this.color = color;
     }
 
+    public Long getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Long idClient) {
+        this.idClient = idClient;
+    }
 }
