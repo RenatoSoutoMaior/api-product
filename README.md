@@ -6,13 +6,20 @@ This system was developed to present as a conclusion of the Computer Science cou
 
 ### Below the links of all API's:
 https://github.com/LeonardoAndriotti/client
+
 https://github.com/LeonardoAndriotti/core
+
 https://github.com/RenatoSoutoMaior/api-product
 
 ### Employees involved:
 https://github.com/EdgarPontes
+
 https://github.com/KelvySilva
+
 https://github.com/LeonardoAndriotti
+
 https://github.com/RaulMaia
+
 https://github.com/RenatoSoutoMaior
+
 https://github.com/RicardoLuizSilveira
